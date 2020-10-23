@@ -8,11 +8,11 @@ def mergeSort(iList: List):
     if len(iList) <= 1:
         return iList
     middle = len(iList) // 2
-    left, right = iList[:middle], iList[middle:]
-    return merge(mergeSort(left), mergeSort(right))
+    left, right = iList[0:middle], iList[middle:]
+    return merge1(mergeSort(left), mergeSort(right))
 
 
-def mergeList(left: List, right: List):
+def merge(left: List, right: List):
     """对Python优化的归并"""
     mList = []
     while left and right:
@@ -24,11 +24,10 @@ def mergeList(left: List, right: List):
         mList.append(left.pop(0))
     while right:
         mList.append(right.pop(0))
-
     return mList
 
 
-def merge(left: List, right: List):
+def merge1(left: List, right: List):
     """传统归并"""
     left_len = len(left)
     right_len = len(right)
@@ -51,6 +50,7 @@ def merge(left: List, right: List):
 if __name__ == '__main__':
     print("原始数据", iList)
     print(mergeSort(iList))
+    # print(m)
 
 
 
